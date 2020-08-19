@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Haven - Find Refugee Centers</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="apple-touch-icon" href="touch-icon-iphone.png">
+<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
+<link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
+<link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
+<link rel="apple-touch-icon" href="/custom_icon.png">   
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+
+        .mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+        margin: 100px 10px 0 0;
+
+}
+            .marker {
+              background-image: url('pin.svg');
+              background-size: cover;
+              width: 27px;
+              height: 38px;
+              border-radius: 50%;
+              cursor: pointer;
+}
+
+.mapboxgl-popup {
+  width: 181px;
+height: 40px;
+}
+
+
+.mapboxgl-popup-content {
+ position: absolute;
+
+
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 18px;
+color: #2A2B2B;
+background: #FFFFFF;
+border: 1px solid #C6C6C6;
+box-sizing: border-box;
+box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.2);
+border-radius: 7px;
+}
+
+.img-fluid{
+    padding-right: 50px;
+}
+
+    </style>
+
+</head>
+<body>
+
+<div id='map'></div>
+
+<script>
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiamFoaXQiLCJhIjoiY2lxNzFkM2I0MDAyMWh2bTI2d3U5enhndyJ9.9PCOAhDP4ZYMPE7sOmXaSw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/jahit/ckdviu4k026jh19pgtzybman7',
+        center: [-0.0919983, 51.5156177],
+        zoom: 11.15
+    });
+
+
+
+var geojson = {
+  type: 'FeatureCollection',
+  features: [{
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-0.141766, 51.49237]
+    },
+    properties: {
+      title: 'Reguee Action',
+      description: 'Victoria Charity Centre, 11 Belgrave Rd, Pimlico, London SW1V 1RB<p> <a href="tel:07803 315629">07803 315629</a>'
+
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-0.1839500069, 51.514381408]
+    },
+    properties: {
+      title: 'Barnet Refugee Service',
+      description: 'Hyde House, Edgware Rd, London NW9 6LH <p><a href="tel:"020 8905 9002">  020 8905 9002</a>'
+    }
+  },
+   {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-0.0703716, 51.5200465]
+    },
+    properties: {
+      title: 'Help Regugees',
+      description: '68 Hanbury St, Spitalfields, London E1 5JL<p> <a href="tel:020 3818 3240">020 3818 3240</a>'
+    }
+  },
+
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-0.24599, 51.536995]
+    },
+    properties: {
+      title: 'Refugee Support Network',
+      description: '32 Manor Park Rd, Harlesden, London NW10 4JJ-'
+    }
+  },
+
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-0.100361, 51.539232]
+    },
+    properties: {
+      title: 'Islington Centre For Refugees',
+      description: '16-18 Cross St, Islington, London N1 2BG<p> <a href="tel:020 7354 9946">020 7354 9946</a>'
+    }
+  },
+
+   {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-0.130099, 51.539232]
+    },
+    properties: {
+      title: 'Notre Dame Refugee Centre',
+      description: '5 Leicester Pl, West End, London WC2H 7BX<p> <a href="tel:020 7440 2668">020 7440 2668</a>'
+    }
+  },
+
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-0.089672, 51.52485]
+    },
+    properties: {
+      title: 'Women For Refugee Women',
+      description: '52 Featherstone St, Old Street, London EC1Y 8RT<p> <a href="tel:020 7250 1239">020 7250 1239</a>'
+    }
+  },
+
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-0.004025, 51.54406]
+    },
+    properties: {
+      title: 'Refugee Council',
+      description: '134 – 138 The Grove, London E15 1NS<p> <a href="tel:020 7346 6700">020 7346 6700</a>'
+    }
+  },
+
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-0.132293, 51.428408]
+    },
+    properties: {
+      title: 'Streatham Drop-in Centre',
+      description: '2 Mitcham Ln, St Leonards, London SW1 6NN<p> <a href="tel:020 8664 7432">020 8664 7432</a>'
+    }
+  },
+
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-0.130923, 51.531075]
+    },
+    properties: {
+      title: 'Sante Project Asylum',
+      description: 'Phoenix Rd, Euston, London NW1 1ES<p> <a href="tel:020 7482 2903">020 7482 2903</a>'
+    }
+  },
+
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-0.006616, 51.534918]
+    },
+    properties: {
+      title: 'Refugee and Migrant Forum',
+      description: 'The Peoples Place, 80 - 92 High St, London E15 2NE<p> <a href="tel:020 8478 4513">020 8478 4513</a>'
+    }
+  },
+
+   {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-0.012387, 51.355707]
+    },
+    properties: {
+      title: 'Greenwich Refugee Aid',
+      description: '18 Leegate, Lee, London SE12 8SS-'
+    }
+  },
+
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-0.125316, 51.435797]
+    },
+    properties: {
+      title: 'South London Refugee Association',
+      description: '16 Leigham Ct Rd, Streatham Wells, London SW16 2PJ<p> <a href="tel:020 3490 3443">020 3490 3443</a>'
+    }
+  },
+
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-0.125907, 51.491983]
+    },
+    properties: {
+      title: 'Reset Communities and Refugee',
+      description: 'Millbank Tower, 21-24 Millbank, Westminster, London SW1P 4QP<p> <a href="tel:020 3582 9882">020 3582 9882</a>'
+    }
+  },
+
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-2.2494783, 53.4674334]
+    },
+    properties: {
+      title: 'Refugee Action Manchester',
+      description: '179 Royce Rd, Greater, Hulme, Manchester M15 5TJ<p> <a href="tel:0161 831 5420">0161 831 5420</a>'
+    }
+  },
+
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-2.244767, 53.455607]
+    },
+    properties: {
+      title: 'Refugee Support Network',
+      description: '129 Princess Rd, Manchester M14 4RB, <p> <a href="tel:0161 868 0777">0161 868 0777</a>'
+    }
+  },
+
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-2.193211, 53.450936]
+    },
+    properties: {
+      title: 'Asylum Support',
+      description: 'The Jain Community Centre, 669 Stockport Rd, Manchester M12 4QE<p> <a href="tel:0161 227 8555">0161 227 8555</a>'
+    }
+  }]
+
+};
+
+map.addControl(new mapboxgl.NavigationControl());
+
+
+geojson.features.forEach(function(marker) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .addTo(map);
+    new mapboxgl.Marker(el)
+  .setLngLat(marker.geometry.coordinates)
+  .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+  .addTo(map);
+});
+
+map.addControl(
+new mapboxgl.GeolocateControl({
+positionOptions: {
+enableHighAccuracy: true
+},
+trackUserLocation: true
+})
+);
+
+</script>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<img src="logo.svg" class="img-fluid" alt="Responsive image">  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Map <span class="sr-only">(current)</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="https://forms.gle/uTenJrHEQmktUUUy7" target="_blank">Submit</a>
+      </li>
+     
+    </ul>
+  </div>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
